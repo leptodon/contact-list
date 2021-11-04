@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Contact list</string>
+    <string name="btn_cancel_text">Отмена</string>
+    <string name="department_name_all">Все</string>
+    <string name="department_name_android">Android</string>
+    <string name="department_name_ios">iOS</string>
+    <string name="department_name_design">Дизайн</string>
+    <string name="department_name_management">Менеджмент</string>
+    <string name="department_name_qa">QA</string>
+    <string name="department_name_back_office">Бэк-офис</string>
+    <string name="department_name_frontend">Frontend</string>
+    <string name="department_name_hr">HR</string>
+    <string name="department_name_pr">PR</string>
+    <string name="department_name_backend">Backend</string>
+    <string name="department_name_support">Техподдержка</string>
+    <string name="department_name_analytics">Аналитика</string>
+
+</resources>

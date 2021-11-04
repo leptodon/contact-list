@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">Contact list</string>
-    <string name="btn_cancel_text">Отмена</string>
+    <string name="btn_cancel_text">Cancel</string>
+    <string name="department_name_all">All</string>
+    <string name="department_name_android">Android</string>
+    <string name="department_name_ios">iOS</string>
+    <string name="department_name_design">Design</string>
+    <string name="department_name_management">Management</string>
+    <string name="department_name_qa">QA</string>
+    <string name="department_name_back_office">Back office</string>
+    <string name="department_name_frontend">Frontend</string>
+    <string name="department_name_hr">HR</string>
+    <string name="department_name_pr">PR</string>
+    <string name="department_name_backend">Backend</string>
+    <string name="department_name_support">Support</string>
+    <string name="department_name_analytics">Analytics</string>
 </resources>

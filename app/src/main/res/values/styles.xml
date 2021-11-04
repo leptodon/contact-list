@@ -7,6 +7,8 @@
 
     <style name="AppTheme" parent="MaterialThemeApplication" />
 
+<!-- FONTS STYLE -->
+
     <style name="AppTheme.Typography">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/inter_regular</item>
@@ -152,5 +154,12 @@
     <style name="AppTheme.Typography.inter_semi_bold_24" parent="AppTheme.Typography">
         <item name="android:textSize">24sp</item>
         <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <!-- TAB LAYOUT STYLE -->
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
     </style>
 </resources>
