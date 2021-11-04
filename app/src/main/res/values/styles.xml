@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="MaterialThemeApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">?android:colorBackground</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="AppTheme" parent="MaterialThemeApplication" />
+
+    <style name="AppTheme.Typography">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_13" parent="AppTheme.Typography">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_14" parent="AppTheme.Typography">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_15" parent="AppTheme.Typography">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_16" parent="AppTheme.Typography">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_17" parent="AppTheme.Typography">
+        <item name="android:textSize">17sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_20" parent="AppTheme.Typography">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_bold_24" parent="AppTheme.Typography">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_13" parent="AppTheme.Typography">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_14" parent="AppTheme.Typography">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_15" parent="AppTheme.Typography">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_16" parent="AppTheme.Typography">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_17" parent="AppTheme.Typography">
+        <item name="android:textSize">17sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_20" parent="AppTheme.Typography">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_medium_24" parent="AppTheme.Typography">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+
+    <style name="AppTheme.Typography.inter_regular_13" parent="AppTheme.Typography">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_regular_14" parent="AppTheme.Typography">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_regular_15" parent="AppTheme.Typography">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_regular_16" parent="AppTheme.Typography">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_regular_17" parent="AppTheme.Typography">
+        <item name="android:textSize">17sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_regular_20" parent="AppTheme.Typography">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_regular_24" parent="AppTheme.Typography">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_13" parent="AppTheme.Typography">
+        <item name="android:textSize">13sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_14" parent="AppTheme.Typography">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_15" parent="AppTheme.Typography">
+        <item name="android:textSize">15sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_16" parent="AppTheme.Typography">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_17" parent="AppTheme.Typography">
+        <item name="android:textSize">17sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_20" parent="AppTheme.Typography">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Typography.inter_semi_bold_24" parent="AppTheme.Typography">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/inter_semi_bold</item>
+    </style>
+</resources>
