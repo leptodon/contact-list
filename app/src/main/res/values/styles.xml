@@ -3,9 +3,52 @@
     <style name="MaterialThemeApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor">?android:colorBackground</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     </style>
 
     <style name="AppTheme" parent="MaterialThemeApplication" />
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_card_custom_corners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay_card_custom_corners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">20dp</item>
+        <item name="cornerSizeTopLeft">20dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+<!-- Set parent theme as app theme. -->
+    <style name="DialogTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+<!-- TAB LAYOUT STYLE -->
+
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="ClickableView">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
 
 <!-- FONTS STYLE -->
 
@@ -154,12 +197,5 @@
     <style name="AppTheme.Typography.inter_semi_bold_24" parent="AppTheme.Typography">
         <item name="android:textSize">24sp</item>
         <item name="fontFamily">@font/inter_semi_bold</item>
-    </style>
-
-    <!-- TAB LAYOUT STYLE -->
-
-    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
-        <item name="textAllCaps">false</item>
-        <item name="android:textAllCaps">false</item>
     </style>
 </resources>

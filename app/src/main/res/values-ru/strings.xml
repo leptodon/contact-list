@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Contact list</string>
+
+    <!-- common -->
     <string name="btn_cancel_text">Отмена</string>
+
+    <!-- departments -->
     <string name="department_name_all">Все</string>
     <string name="department_name_android">Android</string>
     <string name="department_name_ios">iOS</string>
@@ -15,5 +19,14 @@
     <string name="department_name_backend">Backend</string>
     <string name="department_name_support">Техподдержка</string>
     <string name="department_name_analytics">Аналитика</string>
+
+    <!-- filter_dialog -->
+    <string name="filter_dialog_sort">Сортировка</string>
+    <string name="filter_dialog_on_alphabet">По алфавиту</string>
+    <string name="filter_dialog_on_birthday">По дню рождения</string>
+    <string name="search_layout_hint">Введи имя, тег, почту...</string>
+    <string name="network_error_header">Какой-то сверхразум все сломал</string>
+    <string name="network_error_description">Постараемся быстро починить</string>
+    <string name="network_error_btn">Попробовать снова</string>
 
 </resources>

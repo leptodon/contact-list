@@ -79,4 +79,13 @@ dependencies {
     /** Tab layout **/
     implementation "androidx.viewpager2:viewpager2:1.1.0-beta01"
 
+    /** Pull to refresh **/
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    /** Coil **/
+    implementation "io.coil-kt:coil:1.4.0"
+    implementation "io.coil-kt:coil-svg:1.4.0"
+
+    /** RoundedImageView **/
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
