@@ -52,7 +52,11 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
 
             etSearchField.doOnTextChanged { text, _, _, _ ->
-                if (text?.length!! >= 2) viewModel.searchUsers(text.toString())
+                run {
+                    val searchText = text?.toString() ?: ""
+                    if (searchText.length >= 2) viewModel.searchUsers(searchText)
+                }
+
             }
             ivFilterButton.setOnClickListener {
                 showFilterDialog()

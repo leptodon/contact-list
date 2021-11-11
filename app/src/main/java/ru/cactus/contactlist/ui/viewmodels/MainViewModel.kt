@@ -102,14 +102,10 @@ class MainViewModel(
                 }
                 SortedBy.BIRTHDAY -> {
                     val mList = mutableListOf<User>()
-                    listUsers.forEach { user ->
-                        run {
-                            if (DateHelper.compareWithCurrentDay(user.birthday)) {
-                                mList.add(user)
-                            }
-                        }
-                    }
+                    mList.addAll(getBirthdaysByTwoLists(listUsers)[0])
+
                     return@let mList.sortedBy { user -> user.birthday }
+
                 }
             }
         }
@@ -134,6 +130,22 @@ class MainViewModel(
 
         }
         sortedBy(tempList)
+    }
+
+    private fun getBirthdaysByTwoLists(list: List<User>): List<List<User>> {
+        val fullList = mutableListOf<List<User>>()
+        val listBefore = mutableListOf<User>()
+        val listAfter = mutableListOf<User>()
+        list.forEach { user ->
+            if (DateHelper.compareWithCurrentDay(user.birthday)) {
+                listAfter.add(user)
+            } else {
+                listBefore.add(user)
+            }
+        }
+        fullList.add(listAfter)
+        fullList.add(listBefore)
+        return fullList
     }
 
 }

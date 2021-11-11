@@ -1,6 +1,7 @@
 package ru.cactus.contactlist.utils
 
 import android.annotation.SuppressLint
+import ru.cactus.contactlist.data.response_models.User
 import java.text.DateFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -15,10 +16,13 @@ object DateHelper {
 
     private val engDateFormatDash: DateFormat = SimpleDateFormat(ENG_DATE_DASH_FORMAT, Locale("ru"))
     private val calendar = Calendar.getInstance()
+
     @SuppressLint("SimpleDateFormat")
     private val sdfEn = SimpleDateFormat(ENG_DATE_DASH_FORMAT)
+
     @SuppressLint("SimpleDateFormat")
     private val sdfRu = SimpleDateFormat(RU_DATE_DASH_FORMAT)
+
     @SuppressLint("SimpleDateFormat")
     private val sdfRuMonthDay = SimpleDateFormat(RU_MONTH_DAY_FORMAT)
 
@@ -33,15 +37,15 @@ object DateHelper {
         return parse(dateString)?.time ?: 0
     }
 
-    fun toMonthAndDayFormat(dateString: String):String {
+    fun toMonthAndDayFormat(dateString: String): String {
         return sdfRuMonthDay.format(sdfEn.parse(dateString)!!)
     }
 
-    fun toRuFormat(dateString: String):String {
+    fun toRuFormat(dateString: String): String {
         return sdfRu.format(sdfEn.parse(dateString)!!)
     }
 
-    fun getAge(birthDay: String):String{
+    fun getAge(birthDay: String): String {
         val bDay = Calendar.getInstance()
         bDay.time = sdfEn.parse(birthDay)!!
 
@@ -78,11 +82,20 @@ object DateHelper {
             else -> "$age лет"
         }
 
-    fun compareWithCurrentDay(bDay:String):Boolean{
-        val changeYear = bDay.replace(bDay.subSequence(0,4).toString(), "2021")
+    fun compareWithCurrentDay(bDay: String): Boolean {
+        val changeYear = bDay.replace(bDay.subSequence(0, 4).toString(), "2021")
         val currentDay = Calendar.getInstance()
         currentDay.time = sdfEn.parse(changeYear)!!
-
-        return currentDay.after(calendar)
+        return when {
+            currentDay.after(calendar) -> {
+                true
+            }
+            currentDay.before(calendar) -> {
+                false
+            }
+            else -> {
+                false
+            }
+        }
     }
 }
