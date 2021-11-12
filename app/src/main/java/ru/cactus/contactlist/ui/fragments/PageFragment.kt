@@ -9,6 +9,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.cactus.contactlist.R
 import ru.cactus.contactlist.data.response_models.User
 import ru.cactus.contactlist.databinding.PageFragmentBinding
+import ru.cactus.contactlist.domain.entities.SortedBy
 import ru.cactus.contactlist.ui.adapters.UsersAdapter
 import ru.cactus.contactlist.ui.dialogs.UserProfileDialog
 import ru.cactus.contactlist.ui.viewmodels.MainViewModel
@@ -41,7 +42,7 @@ class PageFragment : Fragment(R.layout.page_fragment) {
     private fun setupObserver() {
         with(viewModel) {
             mapOfUsersByDepartment.observe(viewLifecycleOwner) {
-                it[arguments?.get("DEPARTMENTS")]?.let { it1 -> adapter.showList(it1) }
+                it[arguments?.get("DEPARTMENTS")]?.let { userList -> adapter.showList(userList) }
             }
             isProgress.observe(viewLifecycleOwner) {
                 binding.swipeContainer.isRefreshing = it
@@ -57,6 +58,6 @@ class PageFragment : Fragment(R.layout.page_fragment) {
     /** Для отключения обновления данных из сети при каждом нажатии вкладки закомментируйте метод onPause() **/
     override fun onPause() {
         super.onPause()
-        viewModel.loadData()
+        viewModel.loadRawData()
     }
 }

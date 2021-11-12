@@ -27,5 +27,6 @@
     <string name="network_error_header">Какой-то сверхразум все сломал</string>
     <string name="network_error_description">Постараемся быстро починить</string>
     <string name="network_error_btn">Попробовать снова</string>
+    <string name="recycler_year">2022</string>
 
 </resources>

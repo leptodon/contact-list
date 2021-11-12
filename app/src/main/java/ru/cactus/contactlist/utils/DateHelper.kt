@@ -12,6 +12,7 @@ object DateHelper {
     private const val ENG_DATE_DASH_FORMAT = "yyyy-MM-dd"
     private const val RU_DATE_DASH_FORMAT = "dd MMMM yyyy"
     private const val RU_MONTH_DAY_FORMAT = "MMM d"
+    private const val MONTH_DAY_SORT_FORMAT = "MMdd"
 
 
     private val engDateFormatDash: DateFormat = SimpleDateFormat(ENG_DATE_DASH_FORMAT, Locale("ru"))
@@ -26,6 +27,9 @@ object DateHelper {
     @SuppressLint("SimpleDateFormat")
     private val sdfRuMonthDay = SimpleDateFormat(RU_MONTH_DAY_FORMAT)
 
+    @SuppressLint("SimpleDateFormat")
+    private val sdfSort = SimpleDateFormat(MONTH_DAY_SORT_FORMAT)
+
 
     @Throws(ParseException::class)
     fun parse(dataStr: String?): Date? {
@@ -38,11 +42,11 @@ object DateHelper {
     }
 
     fun toMonthAndDayFormat(dateString: String): String {
-        return sdfRuMonthDay.format(sdfEn.parse(dateString)!!)
+        return sdfRuMonthDay.format(sdfEn.parse(dateString) ?: "")
     }
 
     fun toRuFormat(dateString: String): String {
-        return sdfRu.format(sdfEn.parse(dateString)!!)
+        return sdfRu.format(sdfEn.parse(dateString) ?: "")
     }
 
     fun getAge(birthDay: String): String {
@@ -50,6 +54,10 @@ object DateHelper {
         bDay.time = sdfEn.parse(birthDay)!!
 
         return ageDescription(calendarYearsBetween(bDay, calendar))
+    }
+
+    fun getSortFormat(dateString: String): String {
+        return sdfSort.format(sdfEn.parse(dateString) ?: "")
     }
 
     fun calendarYearsBetween(startCal: Calendar, endCal: Calendar): Int {

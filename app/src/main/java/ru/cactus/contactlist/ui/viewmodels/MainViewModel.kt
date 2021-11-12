@@ -39,7 +39,7 @@ class MainViewModel(
     private val _usersList = MutableLiveData<List<User>>()
     private var usersList = _usersList.asLiveData()
 
-    fun loadData() = viewModelScope.launch {
+    private fun loadData() = viewModelScope.launch {
         loadUsersList()
             .onStart { _isProgress.postValue(true) }
             .onCompletion { _isProgress.postValue(false) }
@@ -54,7 +54,14 @@ class MainViewModel(
     }
 
     fun loadRawData() {
-        loadData().isCompleted
+        when (isSortedBy) {
+            SortedBy.ALPHABET -> loadData()
+            SortedBy.BIRTHDAY -> {
+                sortedBy(usersList.value!!)
+                _isProgress.postValue(false)
+            }
+            else -> loadData()
+        }
     }
 
     private fun loadUsersList() = repo.getResponse().map { response ->
@@ -84,35 +91,23 @@ class MainViewModel(
     }
 
     private fun sortedBy(listUsers: List<User>) {
-        if (listUsers.isNullOrEmpty()) return
+        if (listUsers.isNullOrEmpty()) {
+            _usersList.postValue(emptyList())
+            return
+        }
 
-//        val sortedList = this.isSortedBy?.let {
-//            listUsers.sortedBy { user ->
-//                when (it) {
-//                    SortedBy.ALPHABET -> user.firstName
-//                    SortedBy.BIRTHDAY -> user.birthday
-//                }
-//            }
-//        } ?: listUsers
-
-        val sortedList = this.isSortedBy?.let {
+        val sortedList = isSortedBy?.let {
             when (it) {
                 SortedBy.ALPHABET -> {
                     return@let listUsers.sortedBy { user -> user.firstName }
                 }
                 SortedBy.BIRTHDAY -> {
-                    val mList = mutableListOf<User>()
-                    mList.addAll(getBirthdaysByTwoLists(listUsers)[0])
-
-                    return@let mList.sortedBy { user -> user.birthday }
-
+                    return@let getBirthdaysByTwoLists(listUsers)
                 }
             }
         }
-
-        _usersList.value = sortedList ?: emptyList()
+        _usersList.postValue(sortedList ?: emptyList())
         setUsersToMap(sortedList ?: emptyList())
-
     }
 
     fun searchUsers(text: String) {
@@ -124,7 +119,6 @@ class MainViewModel(
                     user.userTag.contains(text, true)
                 ) {
                     tempList.add(user)
-
                 }
             }
 
@@ -132,10 +126,11 @@ class MainViewModel(
         sortedBy(tempList)
     }
 
-    private fun getBirthdaysByTwoLists(list: List<User>): List<List<User>> {
-        val fullList = mutableListOf<List<User>>()
+    private fun getBirthdaysByTwoLists(list: List<User>): List<User> {
+        val fullList = mutableListOf<User>()
         val listBefore = mutableListOf<User>()
         val listAfter = mutableListOf<User>()
+
         list.forEach { user ->
             if (DateHelper.compareWithCurrentDay(user.birthday)) {
                 listAfter.add(user)
@@ -143,8 +138,10 @@ class MainViewModel(
                 listBefore.add(user)
             }
         }
-        fullList.add(listAfter)
-        fullList.add(listBefore)
+
+        fullList.addAll(listAfter.sortedBy { DateHelper.getSortFormat(it.birthday) })
+        fullList.addAll(listBefore.sortedBy { DateHelper.getSortFormat(it.birthday) })
+
         return fullList
     }
 

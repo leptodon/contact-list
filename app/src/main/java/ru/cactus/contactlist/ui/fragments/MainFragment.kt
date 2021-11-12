@@ -1,8 +1,11 @@
 package ru.cactus.contactlist.ui.fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -22,11 +25,13 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val binding by viewBinding<MainFragmentBinding>()
     private val viewModel by sharedViewModel<MainViewModel>()
+    private val inputMethodManager =
+        activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.loadData()
+        viewModel.loadRawData()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,15 +53,18 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             }
 
             tvCancelBtn.setOnClickListener {
+                etSearchField.setText("")
                 etSearchField.clearFocus()
+                inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
             }
 
             etSearchField.doOnTextChanged { text, _, _, _ ->
-                run {
-                    val searchText = text?.toString() ?: ""
-                    if (searchText.length >= 2) viewModel.searchUsers(searchText)
+                val searchText = text?.toString() ?: ""
+                if (searchText.length >= 2) {
+                    viewModel.searchUsers(searchText)
+                } else {
+                    viewModel.loadRawData()
                 }
-
             }
             ivFilterButton.setOnClickListener {
                 showFilterDialog()
@@ -78,7 +86,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private fun setupObservers() {
         viewModel.isProgress.observe(viewLifecycleOwner) {
-
         }
         viewModel.networkError.observe(viewLifecycleOwner) {
             if (it) showNetworkErrorDialog()
