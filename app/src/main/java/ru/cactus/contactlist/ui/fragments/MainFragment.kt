@@ -25,9 +25,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
 
     private val binding by viewBinding<MainFragmentBinding>()
     private val viewModel by sharedViewModel<MainViewModel>()
-    private val inputMethodManager =
-        activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -55,6 +52,8 @@ class MainFragment : Fragment(R.layout.main_fragment) {
             tvCancelBtn.setOnClickListener {
                 etSearchField.setText("")
                 etSearchField.clearFocus()
+                val inputMethodManager =
+                    activity?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
             }
 

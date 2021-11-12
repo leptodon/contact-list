@@ -9,7 +9,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import ru.cactus.contactlist.R
 import ru.cactus.contactlist.data.response_models.User
 import ru.cactus.contactlist.databinding.PageFragmentBinding
-import ru.cactus.contactlist.domain.entities.SortedBy
 import ru.cactus.contactlist.ui.adapters.UsersAdapter
 import ru.cactus.contactlist.ui.dialogs.UserProfileDialog
 import ru.cactus.contactlist.ui.viewmodels.MainViewModel
