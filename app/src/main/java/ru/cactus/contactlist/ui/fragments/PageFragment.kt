@@ -26,7 +26,6 @@ class PageFragment : Fragment(R.layout.page_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupViews()
         setupObserver()
-        shimmersetup()
     }
 
     private fun setupViews() {
@@ -45,34 +44,29 @@ class PageFragment : Fragment(R.layout.page_fragment) {
         with(viewModel) {
             mapOfUsersByDepartment.observe(viewLifecycleOwner) {
                 it[arguments?.get("DEPARTMENTS")]?.let { userList ->
-
                     adapter.showList(userList)
                 }
             }
 
             isProgress.observe(viewLifecycleOwner) {
                 binding.swipeContainer.isRefreshing = it
+                when (it) {
+                    true -> {
+                        binding.shimmerViewContainer.startShimmer()
+                    }
+                    false -> {
+                        binding.shimmerViewContainer.stopShimmer()
+                        binding.shimmerViewContainer.hideShimmer()
+                    }
+                }
             }
+
+
         }
     }
 
     private fun showUserProfile(user: User) {
         UserProfileDialog(user).show(childFragmentManager, "signature")
-    }
-
-    private fun shimmersetup() {
-        viewModel.isProgress.observe(viewLifecycleOwner) {
-            when (it) {
-                true -> {
-                    binding.shimmerViewContainer.startShimmer()
-                }
-                false -> {
-                    binding.shimmerViewContainer.stopShimmer()
-                    binding.shimmerViewContainer.hideShimmer()
-                }
-            }
-        }
-
     }
 
     /** Для отключения обновления данных из сети при каждом нажатии вкладки закомментируйте метод onPause() **/

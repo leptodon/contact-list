@@ -27,7 +27,6 @@ class MainFragment : Fragment(R.layout.main_fragment) {
     private val viewModel by sharedViewModel<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         viewModel.loadRawData()
     }
 

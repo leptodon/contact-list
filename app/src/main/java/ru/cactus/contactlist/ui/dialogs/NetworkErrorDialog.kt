@@ -16,14 +16,13 @@ class NetworkErrorDialog : DialogFragment(R.layout.network_error_dialog) {
 
     private val binding by viewBinding<NetworkErrorDialogBinding>()
     private val viewModel by sharedViewModel<MainViewModel>()
-    private var isError by Delegates.notNull<Boolean>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        isCancelable = false
+        isCancelable = false
         return inflater.inflate(R.layout.network_error_dialog, container, false)
     }
 
@@ -36,15 +35,12 @@ class NetworkErrorDialog : DialogFragment(R.layout.network_error_dialog) {
         setupObservers()
         binding.ibNetworkErrorBtn.setOnClickListener {
             viewModel.loadRawData()
-            if (!isError) {
-                dismiss()
-            }
         }
     }
 
     private fun setupObservers() {
         viewModel.networkError.observe(viewLifecycleOwner) {
-            isError = it
+            if(it==false) dismiss()
         }
     }
 }
