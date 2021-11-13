@@ -10,6 +10,7 @@
     <color name="light_gray">#F7F7F8</color>
     <color name="blue">#6534FF</color>
     <color name="dark_grey">#050510</color>
+    <color name="shimmer_grey">#F3F3F6</color>
     <color name="purple">#6534FF</color>
     <color name="grey">#97979B</color>
 </resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_item_container"
+    style="@style/ClickableView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:padding="6dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_avatar"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:background="@color/shimmer_grey"
+        android:scaleType="fitCenter"
+        app:riv_corner_radius="30dip"
+        app:riv_mutate_background="true"
+        app:riv_oval="true"
+        app:riv_tile_mode="clamp"
+        tools:src="@drawable/blank_avatar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/shimmer_grey"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_firstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmer_grey"
+                android:textAppearance="@style/AppTheme.Typography.inter_medium_16"
+                android:textColor="#050510"
+                tools:src="@drawable/blank_name"
+                tools:text="Алиса" />
+
+            <TextView
+                android:id="@+id/tv_lastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/shimmer_grey"
+                android:textAppearance="@style/AppTheme.Typography.inter_medium_16"
+                android:textColor="#050510"
+                tools:src="@drawable/blank_name"
+                tools:text="Иванова" />
+
+            <TextView
+                android:id="@+id/tv_userTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@color/shimmer_grey"
+                android:textAppearance="@style/AppTheme.Typography.inter_medium_14"
+                android:textColor="#97979B"
+                tools:src="@drawable/blank_name"
+                tools:text="an" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/shimmer_grey"
+            android:textAppearance="@style/AppTheme.Typography.inter_regular_13"
+            android:textColor="#55555C"
+            tools:src="@drawable/blank_department"
+            tools:text="Designer" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_birthday_date"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/AppTheme.Typography.inter_regular_15"
+        android:textColor="#55555C"
+        android:visibility="gone"
+        tools:ignore="RtlCompat"
+        tools:text="24 Мая"
+        tools:visibility="visible" />
+</LinearLayout>

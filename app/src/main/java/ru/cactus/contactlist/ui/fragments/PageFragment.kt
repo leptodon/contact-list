@@ -12,6 +12,7 @@ import ru.cactus.contactlist.databinding.PageFragmentBinding
 import ru.cactus.contactlist.ui.adapters.UsersAdapter
 import ru.cactus.contactlist.ui.dialogs.UserProfileDialog
 import ru.cactus.contactlist.ui.viewmodels.MainViewModel
+import ru.cactus.contactlist.utils.Utils
 
 class PageFragment : Fragment(R.layout.page_fragment) {
 
@@ -25,12 +26,14 @@ class PageFragment : Fragment(R.layout.page_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupViews()
         setupObserver()
-        Log.d("TAG", "onViewCreated")
+        shimmersetup()
     }
 
     private fun setupViews() {
         with(binding) {
             recyclerView.adapter = adapter
+
+            adapter.showList(Utils.getBlankUsersList())
 
             swipeContainer.setOnRefreshListener {
                 viewModel.loadRawData()
@@ -41,8 +44,12 @@ class PageFragment : Fragment(R.layout.page_fragment) {
     private fun setupObserver() {
         with(viewModel) {
             mapOfUsersByDepartment.observe(viewLifecycleOwner) {
-                it[arguments?.get("DEPARTMENTS")]?.let { userList -> adapter.showList(userList) }
+                it[arguments?.get("DEPARTMENTS")]?.let { userList ->
+
+                    adapter.showList(userList)
+                }
             }
+
             isProgress.observe(viewLifecycleOwner) {
                 binding.swipeContainer.isRefreshing = it
             }
@@ -53,6 +60,20 @@ class PageFragment : Fragment(R.layout.page_fragment) {
         UserProfileDialog(user).show(childFragmentManager, "signature")
     }
 
+    private fun shimmersetup() {
+        viewModel.isProgress.observe(viewLifecycleOwner) {
+            when (it) {
+                true -> {
+                    binding.shimmerViewContainer.startShimmer()
+                }
+                false -> {
+                    binding.shimmerViewContainer.stopShimmer()
+                    binding.shimmerViewContainer.hideShimmer()
+                }
+            }
+        }
+
+    }
 
     /** Для отключения обновления данных из сети при каждом нажатии вкладки закомментируйте метод onPause() **/
     override fun onPause() {

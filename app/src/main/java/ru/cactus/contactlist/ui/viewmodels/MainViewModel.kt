@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import ru.cactus.contactlist.data.repository.UsersRepository
@@ -66,10 +67,12 @@ class MainViewModel(
 
     private fun loadUsersList() = repo.getResponse().map { response ->
         val items = response?.users ?: emptyList()
-
+        _isProgress.postValue(true)
         return@map if (items.isNullOrEmpty()) {
+            _isProgress.postValue(false)
             null
         } else {
+            _isProgress.postValue(false)
             _usersList.value = items
             setUsersToMap(items)
         }
