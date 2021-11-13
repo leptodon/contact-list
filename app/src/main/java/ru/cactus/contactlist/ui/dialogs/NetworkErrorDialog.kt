@@ -35,12 +35,15 @@ class NetworkErrorDialog : DialogFragment(R.layout.network_error_dialog) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
         binding.ibNetworkErrorBtn.setOnClickListener {
-            if(!isError) dismiss()
+            viewModel.loadRawData()
+            if (!isError) {
+                dismiss()
+            }
         }
     }
 
-    private fun setupObservers(){
-        viewModel.networkError.observe(viewLifecycleOwner){
+    private fun setupObservers() {
+        viewModel.networkError.observe(viewLifecycleOwner) {
             isError = it
         }
     }

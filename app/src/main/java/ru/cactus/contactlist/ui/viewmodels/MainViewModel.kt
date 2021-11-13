@@ -109,6 +109,7 @@ class MainViewModel(
                 }
             }
         }
+
         _usersList.postValue(sortedList ?: emptyList())
         setUsersToMap(sortedList ?: emptyList())
     }
